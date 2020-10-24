@@ -1,0 +1,40 @@
+apply plugin: 'com.android.library'
+
+ext {
+    bintrayName = 'pdf-load'
+    artifact = bintrayName
+    libraryName = 'pdf-load'
+    libraryDescription = 'pdf load for android'
+    libraryVersion = pdf_load_version
+}
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.3"
+
+    defaultConfig {
+        minSdkVersion 19
+        targetSdkVersion 26
+        versionCode 1010
+        versionName "1.0.1"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+        ndk {
+            abiFilters "armeabi-v7a"
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    api 'com.github.barteksc:android-pdf-viewer:3.2.0-beta.1'
+}
+apply from: '../install.gradle'
+apply from: '../bintray.gradle'

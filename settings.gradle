@@ -1,0 +1,3 @@
+include ':LibPdf'
+include ':app'
+rootProject.name = "PDF-load"
