@@ -12,6 +12,10 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        ndk {
+            abiFilters "armeabi-v7a"//指定平台
+        }
     }
 
     buildTypes {
@@ -26,5 +30,7 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.2'
     implementation project(path: ':LibPdf')
+    implementation project(path: ':pdf-x5')
+    implementation project(path: ':web')
 
 }

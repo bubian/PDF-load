@@ -1,0 +1,36 @@
+apply plugin: 'com.android.library'
+
+ext {
+    bintrayName = 'pdf-x5'
+    artifact = bintrayName
+    libraryName = 'pdf-x5'
+    libraryDescription = 'pdf load for android by x5'
+    libraryVersion = pdf_load_version
+}
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.3"
+
+    defaultConfig {
+        minSdkVersion 19
+        targetSdkVersion 29
+        versionCode 1010
+        versionName "1.0.1"
+    }
+
+    buildTypes {
+        release {
+            debuggable false
+            minifyEnabled false
+        }
+    }
+}
+
+dependencies {
+    compileOnly project(path:':web')
+
+}
+
+apply from: '../install.gradle'
+apply from: '../bintray.gradle'
