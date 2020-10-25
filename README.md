@@ -13,18 +13,18 @@ PDF-load是一个用于浏览PDF文档的开源库，支持加载本地PDF文档
 - 加载网络PDF
 
 
-    private void displayFromUrl(String url) {
-        pdfFileName = FileUtils.getFileNameByUrl(url);
-        pdfView.fromUrl(url)
-                .defaultPage(pageNumber)
-                .onPageChange(this)
-                .enableAnnotationRendering(true)
-                .onLoad(this)
-                .scrollHandle(new DefaultScrollHandle(this))
-                .spacing(10)
-                .onPageError(this);
-        pdfView.enableCache(true)
-                .useDefaultProgressView().go();
+        private void displayFromUrl(String url) {
+            pdfFileName = FileUtils.getFileNameByUrl(url);
+            pdfView.fromUrl(url)
+                    .defaultPage(pageNumber)
+                    .onPageChange(this)
+                    .enableAnnotationRendering(true)
+                    .onLoad(this)
+                    .scrollHandle(new DefaultScrollHandle(this))
+                    .spacing(10)
+                    .onPageError(this);
+            pdfView.enableCache(true)
+                    .useDefaultProgressView().go();
     }
 
 
