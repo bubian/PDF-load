@@ -38,7 +38,7 @@ PDF-load是一个用于浏览PDF文档的开源库，支持加载本地PDF文档
 
    LibPdf支持自定义进度条，调用addCustomProgress方法加入自己的进度View。
 
-##### 更多请参考demo
+更多请参考demo
 
 ##### pdf-x5 基于[腾讯X5浏览器](https://x5.tencent.com/guide/sdkInit.html)
 
