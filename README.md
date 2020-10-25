@@ -1,6 +1,20 @@
 # PDF-load
-PDF-load是一个用于浏览PDF文档的开源库，支持加载本地PDF文档，网络pdf文档。开源库提供了两种方式加载方式。
+PDF-load是一个用于浏览PDF文档的开源库，支持加载本地PDF文档，网络pdf文档。开源库提供了两种加载方式。
 可以根据项目具体情况选择。
+
+### 博客
+关于PDF加载方法对比可以参考我的博文：[【总结】- PDF解决方案](https://www.jianshu.com/p/8c8d2363b8a7)
+
+##### 配置
+
+- 使用LibPdf
+
+        implementation 'com.pds:pdf-load:1.0.1'
+
+- 使用pdf-x5
+
+        implementation 'com.pds:pdf-x5:1.0.2'
+
 
 ##### LibPdf 基于[AndroidPdfViewer](https://github.com/barteksc/AndroidPdfViewer)
 
