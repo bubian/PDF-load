@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.os.Environment;
 import android.text.TextUtils;
+import android.util.AttributeSet;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
@@ -33,6 +34,20 @@ public class X5PDFView extends FrameLayout {
 
     public X5PDFView(Context context) {
         super(context);
+        init(context);
+    }
+
+    public X5PDFView(Context context, AttributeSet attrs) {
+        super(context, attrs);
+        init(context);
+    }
+
+    public X5PDFView(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
+        init(context);
+    }
+
+    private void init(Context context) {
         mDownLoadManager = new DownLoadManager();
     }
 
