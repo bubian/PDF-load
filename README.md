@@ -8,4 +8,4 @@ PDF-load是一个用于浏览PDF文档的开源库，支持加载本地PDF文档
 
 效果如下：
 
-![Image](https://github.com/bubian/PDF-load/blob/master/screenshot/pdf-load.png)
+<img src="https://github.com/bubian/PDF-load/blob/master/screenshot/pdf-load.png" width="540" height="1140" alt="图片描述文字"/>
