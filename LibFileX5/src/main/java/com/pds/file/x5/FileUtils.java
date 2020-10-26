@@ -1,4 +1,4 @@
-package com.pds.pdf.x5;
+package com.pds.file.x5;
 
 import android.content.Context;
 import android.database.Cursor;

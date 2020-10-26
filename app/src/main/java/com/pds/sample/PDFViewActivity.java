@@ -15,7 +15,6 @@ package com.pds.sample;
 
 import android.os.Bundle;
 import android.util.Log;
-import android.view.ViewGroup;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import com.github.barteksc.pdfviewer.listener.OnLoadCompleteListener;
@@ -24,7 +23,6 @@ import com.github.barteksc.pdfviewer.listener.OnPageErrorListener;
 import com.github.barteksc.pdfviewer.scroll.DefaultScrollHandle;
 import com.pds.pdf.core.ExtPDFView;
 import com.pds.pdf.utils.FileUtils;
-import com.pds.pdf.x5.X5PDFView;
 import com.shockwave.pdfium.PdfDocument;
 import java.util.List;
 
@@ -48,15 +46,8 @@ public class PDFViewActivity extends AppCompatActivity implements OnPageChangeLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pdf);
         pdfView = findViewById(R.id.pdfView);
-        // displayFromUrl(mUrl);
+        displayFromUrl(mUrl);
         // TbsReaderView: not supported by:pdf
-        pdfView.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                displayFromX5(mUrl);
-            }
-        },1500);
-
         setTitle(pdfFileName);
     }
 
@@ -73,12 +64,6 @@ public class PDFViewActivity extends AppCompatActivity implements OnPageChangeLi
         pdfView.enableCache(true)
                 .useDefaultProgressView().go();
     }
-    private void displayFromX5(String url) {
-        X5PDFView pdfView = new X5PDFView(this);
-        ((ViewGroup)getWindow().getDecorView()).addView(pdfView);
-        pdfView.loadPDFromUrl(url);
-    }
-
 
     @Override
     public void onPageChanged(int page, int pageCount) {

@@ -1,5 +1,5 @@
+include ':LibFileX5'
 include ':web'
-include ':pdf-x5'
 include ':LibPdf'
 include ':app'
 rootProject.name = "PDF-load"

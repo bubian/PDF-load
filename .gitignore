@@ -12,4 +12,5 @@
 /captures
 .externalNativeBuild
 .cxx
-/pdf-x5/build/intermediates/javac/release/classes/com/pds/pdf/x5/BuildConfig.class
+/file-x5/build/intermediates/javac/release/classes/com/pds/pdf/x5/BuildConfig.class
+/LibFileX5/build
