@@ -2,6 +2,10 @@
 PDF-load是一个用于浏览PDF文档的开源库，支持加载本地PDF文档，网络pdf文档。开源库提供了两种加载方式。
 可以根据项目具体情况选择。
 
+### 说明
+
+LibFileX5库不仅支持PDF打开，还支持pptx，docx，xlsx，音视频等，一共支持几十种，详细查看腾讯X5官方文档。
+
 ### 博客
 关于PDF加载方方案对比可以参考我的博文：[【总结】- PDF解决方案](https://www.jianshu.com/p/8c8d2363b8a7)
 ##### 配置
@@ -10,9 +14,9 @@ PDF-load是一个用于浏览PDF文档的开源库，支持加载本地PDF文档
 
         implementation 'com.pds:pdf-load:1.0.1'
 
-- 使用pdf-x5
+- 使用LibFileX5
 
-        implementation 'com.pds:pdf-x5:1.0.2'
+        implementation 'com.pds:file-x5:1.0.1'
 
 
 ##### LibPdf 基于[AndroidPdfViewer](https://github.com/barteksc/AndroidPdfViewer)
@@ -53,18 +57,24 @@ PDF-load是一个用于浏览PDF文档的开源库，支持加载本地PDF文档
 
 更多请参考demo
 
-##### pdf-x5 基于[腾讯X5浏览器](https://x5.tencent.com/guide/sdkInit.html)
+##### LibFileX5 基于[腾讯X5浏览器](https://x5.tencent.com/guide/sdkInit.html)
 
 如果项目中使用了腾讯X5引擎，那么可以直接使用pdf-x5库浏览PDF，apk体积基本没有什么增加，如果项目中没有
 使用X5引擎，要用pdf-x5加载PDF，那么需要先集成X5引擎，开源库中的web库提供的简单的X5集成。
 
-- 使用：
+- 使用Tbs加载：
 
 ```
 // 添加到你的布局中，或者添加到布局文件中，然后
 X5PDFView pdfView = new X5PDFView(this); 
 pdfView.loadPDFromUrl(url);
 ```
+
+- 使用QbSdk加载：
+
+   查看demo中的QBX5Activity文件。 QbSdk支持很多中文件格式。
+
+
 效果和上面差不多。
 
 
