@@ -72,8 +72,27 @@ pdfView.loadPDFromUrl(url);
 
 - 使用QbSdk加载：
 
-   查看demo中的QBX5Activity文件。 QbSdk支持很多中文件格式。
+   查看demo中的QBX5Activity文件。 QbSdk支持很多种文件格式。
 
+   使用QbSdk需要在AndroidManifest.xml配置一下内容
+
+         <provider
+            android:name="com.tencent.smtt.utils.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/x5webview_file_paths" />
+        </provider>
+
+
+x5webview_file_paths.xml
+
+            <?xml version="1.0" encoding="utf-8"?>
+                <paths>
+                <external-path name="sdcard" path="."/>
+            </paths>
 
 效果和上面差不多。
 
