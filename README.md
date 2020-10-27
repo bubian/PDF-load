@@ -12,11 +12,11 @@ LibFileX5库不仅支持PDF打开，还支持pptx，docx，xlsx，音视频等�
 
 - 使用LibPdf
 
-        implementation 'com.pds:pdf-load:1.0.1'
+        implementation 'com.pds:pdf-load:1.0.2'
 
 - 使用LibFileX5
 
-        implementation 'com.pds:file-x5:1.0.1'
+        implementation 'com.pds:file-x5:1.0.2'
 
 
 ##### LibPdf 基于[AndroidPdfViewer](https://github.com/barteksc/AndroidPdfViewer)
