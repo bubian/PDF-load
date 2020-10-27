@@ -1,4 +1,4 @@
-package com.pds.file.x5;
+package com.pds.file.x5.core;
 
 /**
  * @author: pengdaosong

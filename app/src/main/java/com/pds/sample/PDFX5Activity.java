@@ -3,7 +3,7 @@ package com.pds.sample;
 import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import com.pds.file.x5.X5PDFView;
+import com.pds.file.x5.core.X5PDFView;
 
 /**
  * @author: pengdaosong

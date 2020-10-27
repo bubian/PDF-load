@@ -1,4 +1,4 @@
-package com.pds.file.x5;
+package com.pds.file.x5.core;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -9,8 +9,7 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
-import com.pds.file.x5.core.Constants;
-import com.pds.file.x5.core.ViewHelper;
+import com.pds.file.x5.FileUtils;
 import com.pds.file.x5.download.DownLoadManager;
 import com.pds.file.x5.download.DownloadListener;
 import com.pds.file.x5.process.ProgressListener;
