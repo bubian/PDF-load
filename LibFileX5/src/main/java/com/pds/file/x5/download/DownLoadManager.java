@@ -35,12 +35,13 @@ public class DownLoadManager {
                 DownLoadManager.this.startDownLoad(url, filePath, listener);
             }
         });
-        mDownloadThread.start();
         mRunning = true;
+        mDownloadThread.start();
     }
 
     public void destroy(){
         mRunMask = false;
+        mRunning = false;
         if (null != mDownloadThread){
             mDownloadThread.interrupt();
         }

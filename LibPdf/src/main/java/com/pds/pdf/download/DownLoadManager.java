@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.concurrent.Executors;
 
 /**
  * @author: pengdaosong
@@ -20,6 +21,7 @@ public class DownLoadManager {
     private Thread mDownloadThread;
     private boolean mRunning = false;
     private String mUrl;
+    private boolean mRunMask = false;
 
     public void downLoad(final String url, final String filePath, final DownloadListener listener) {
         mUrl = url;
@@ -27,7 +29,7 @@ public class DownLoadManager {
             Log.d(TAG,"same url task running");
             return;
         }
-        mDownloadThread = new Thread(new Runnable() {
+        mDownloadThread = Executors.defaultThreadFactory().newThread(new Runnable() {
             @Override
             public void run() {
                 DownLoadManager.this.startDownLoad(url, filePath, listener);
@@ -37,7 +39,16 @@ public class DownLoadManager {
         mDownloadThread.start();
     }
 
+    public void destroy(){
+        mRunMask = false;
+        mRunning = false;
+        if (null != mDownloadThread){
+            mDownloadThread.interrupt();
+        }
+    }
+
     private void startDownLoad(String url, final String filePath, final DownloadListener listener) {
+        mRunMask = true;
         FileOutputStream fos = null;
         InputStream is = null;
         long currentLen = 0;
@@ -59,8 +70,11 @@ public class DownLoadManager {
             if (!file.exists()) {
                 boolean newFile = file.createNewFile();
             } else {
-                if (file.length() == contentLength) {//若本地存在当前下载文件，且文件大小一致（说明是同一个文件）则，无需再向磁盘写入
-                    if (is != null) is.close();
+                // 若本地存在当前下载文件，且文件大小一致（说明是同一个文件）则，无需再向磁盘写入
+                if (file.length() == contentLength) {
+                    if (is != null) {
+                        is.close();
+                    }
                     listener.onProgress(100);
                     listener.onFinishDownload(true);
                     Log.e(TAG, "本地已有该文件------------->");
@@ -70,7 +84,7 @@ public class DownLoadManager {
             listener.onStartDownload();
             fos = new FileOutputStream(file);
 
-            while ((len = is.read(buf)) != -1) {
+            while ((len = is.read(buf)) != -1 && mRunMask) {
                 fos.write(buf, 0, len);
                 currentLen += len;
                 int progress = (int) (currentLen * 100 / contentLength);
@@ -94,7 +108,9 @@ public class DownLoadManager {
             }
 
             try {
-                if (fos != null) fos.close();
+                if (fos != null) {
+                    fos.close();
+                }
             } catch (Exception e) {
             }
         }

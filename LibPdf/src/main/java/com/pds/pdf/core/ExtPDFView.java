@@ -225,4 +225,10 @@ public class ExtPDFView extends RelativeLayout {
     public PDFView getPDFView() {
         return mPDFView;
     }
+
+    public void ondestroy(){
+       if (null != mDownLoadManager){
+           mDownLoadManager.destroy();
+       }
+    }
 }
