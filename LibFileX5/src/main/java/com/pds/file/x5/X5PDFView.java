@@ -1,6 +1,7 @@
 package com.pds.file.x5;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Environment;
 import android.text.TextUtils;
@@ -13,6 +14,7 @@ import com.pds.file.x5.core.ViewHelper;
 import com.pds.file.x5.download.DownLoadManager;
 import com.pds.file.x5.download.DownloadListener;
 import com.pds.file.x5.process.ProgressListener;
+import com.pds.file.x5.process.ProgressView;
 import com.tencent.smtt.sdk.TbsReaderView;
 import com.tencent.smtt.sdk.TbsReaderView.ReaderCallback;
 import java.io.File;
@@ -43,7 +45,7 @@ public class X5PDFView extends RelativeLayout {
     private PDFLoadListener mPDFLoadListener;
     private TbsReaderView.ReaderCallback mReaderCallback;
     private View mProgressView;
-
+    private int mProgressColor = Color.GREEN;
     public X5PDFView(Context context) {
         super(context);
         init(context);
@@ -89,6 +91,9 @@ public class X5PDFView extends RelativeLayout {
 
     public X5PDFView useDefaultProgressView() {
         mProgressView = ViewHelper.buildDefaultProcessView(this, Constants.DEFAULT_TYPE);
+        if (mProgressView instanceof ProgressView){
+            ((ProgressView)mProgressView).setColor(mProgressColor);
+        }
         ViewHelper.addProcessView(this, mProgressView, Constants.DIRECTION_TOP);
         mTbsReaderView.setLayoutParams(ViewHelper.buildPDFViewLayoutParams(mProgressView, mTbsReaderView,Constants.DIRECTION_TOP));
         return this;
@@ -224,6 +229,18 @@ public class X5PDFView extends RelativeLayout {
     public void setTempPath(String mTempPath) {
         this.mTempPath = mTempPath;
     }
+
+    public void setProgressColor(int color) {
+        this.mProgressColor = color;
+        if (mProgressView instanceof ProgressView){
+            ((ProgressView)mProgressView).setColor(color);
+        }
+    }
+
+    public View getProgressView(){
+        return mProgressView;
+    }
+
 
     private String parseFormat(String fileName) {
         return fileName.substring(fileName.lastIndexOf(".") + 1);
